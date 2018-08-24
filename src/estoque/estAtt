@@ -1,0 +1,60 @@
+package testeestoque;
+
+public class Estoque {
+
+    private String nome;
+    private int qntAtual;
+    private int qntMinima;
+
+    public Estoque(String nome, int qntAtual, int qntMinima) {
+        this.nome = nome;
+        this.qntAtual = qntAtual;
+        this.qntMinima = qntMinima;
+    }
+
+    
+    
+    
+    public void alterarQntMinima(int qntMinima){
+        
+        this.qntMinima = qntMinima;
+        
+    }
+    
+    public void reporEstoque(int addQnt){
+        
+        this.qntAtual += addQnt;
+        
+    }
+    
+    public void baixaEstoque(int tirarQnt){
+        
+        if((this.qntAtual - tirarQnt) > this.qntMinima)
+            this.qntAtual -= tirarQnt;
+        
+        else {
+            
+            precisaRepor();
+            System.out.println("Estoque minimo atingido");
+        }    
+    }
+    
+    public void mostrarDados(){
+        
+        System.out.println("Nome do Produto: " + this.nome );
+        System.out.println("Quantidade no Estoque: " + this.qntAtual);
+        System.out.println("Quantidade Minima: " + this.qntMinima);
+        
+    }
+    
+    public void precisaRepor(){
+        
+        if (this.qntAtual <= this.qntMinima)
+            System.out.println("Necessario repor");
+        
+    }
+    
+    
+    
+}
+
